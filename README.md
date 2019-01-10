@@ -1,6 +1,6 @@
 # 分类器整理
 
-* [xgboost]
+* [XGBoost]
 
 * [LightGBM]
 
