@@ -32,12 +32,13 @@ if __name__ == '__main__':
     }
     xgb_clf = XGBClassifier(nthreads=-1)
 
-    best_xgb_model = best_model.get_best_model(x_train, y_train, model=xgb_clf, params=params, n_iter=200, cv=3)
+    best_xgb_model = best_model.get_best_model(x_train, y_train, model=xgb_clf, params=params, n_iter=500, cv=3)
 
     # predict
     print("predict")
     y_predict = best_xgb_model.predict(x_test)
 
+    # save result
     # convert nparray to dataframe
     y_predict_df = pd.DataFrame()
     y_predict_df["PassengerId"] = pd.read_csv("./data-titanic/test.csv")["PassengerId"]
@@ -45,5 +46,4 @@ if __name__ == '__main__':
 
     print(y_predict_df.head())
     # y_predict_df["Survived"] = y_predict_df["Survived"].apply(lambda x: 1 if x > 0.5 else 0)
-    print("write to csv")
     y_predict_df.to_csv("./data-titanic/xgb_submission.csv", index=False)

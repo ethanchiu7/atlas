@@ -4,6 +4,9 @@ from sklearn.model_selection import RandomizedSearchCV
 import numpy as np
 import feature_engineering_titanic
 import time
+import pandas as pd
+import sys
+import os
 
 
 def report(results, n_top=3):
@@ -30,13 +33,24 @@ def get_best_model(X, y, model, params, n_iter=100, cv=3):
     random_search = RandomizedSearchCV(estimator=model, param_distributions=params, n_iter=n_iter, cv=cv, refit=True)
     random_search.fit(X, y)
 
-    # report(random_search.cv_results_)
+    report(random_search.cv_results_)
 
     print("best estimator : \n")
     # print(random_search.best_estimator_)
     print("return random_search")
 
-    return random_search
+    return random_search.best_estimator_
+
+
+def save_csv(y, save_path):
+    # convert nparray to dataframe
+    y_predict_df = pd.DataFrame()
+    y_predict_df["PassengerId"] = pd.read_csv("./data-titanic/test.csv")["PassengerId"]
+    y_predict_df["Survived"] = pd.DataFrame(y, columns=['Survived'])
+
+    print(y_predict_df.head())
+    # y_predict_df["Survived"] = y_predict_df["Survived"].apply(lambda x: 1 if x > 0.5 else 0)
+    y_predict_df.to_csv(save_path, index=False)
 
 
 if __name__ == '__main__':
@@ -53,12 +67,12 @@ if __name__ == '__main__':
         "leaf_size": st.randint(10, 2000)
     }
 
-    best_knn_model = get_best_model(x_train, y_train, model=knn, params=knn_params, n_iter=10, cv=3)
+    best_estimator = get_best_model(x_train, y_train, model=knn, params=knn_params, n_iter=1000, cv=3)
 
     # predict
-    print("x_test.shape: " + x_test.shape)
-    print(x_test.shape)
-    print(time.time())
-    y_predict = best_knn_model.predict(x_test)
-    print(time.time())
-    print(y_predict)
+    print("predict")
+    y_predict = best_estimator.predict(x_test)
+
+    # save result
+    knn_save_path = os.path.join(os.getcwd(), "data-titanic", "knn_submission.csv")
+    save_csv(y_predict, knn_save_path)
