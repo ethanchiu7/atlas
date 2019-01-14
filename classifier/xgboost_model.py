@@ -1,11 +1,8 @@
-import pandas as pd
-import numpy as np
-from sklearn.model_selection import train_test_split
-from sklearn.model_selection import RandomizedSearchCV
 from xgboost.sklearn import XGBClassifier
 import scipy.stats as st
 import feature_engineering_titanic
 import best_model
+import pandas as pd
 
 
 if __name__ == '__main__':
@@ -35,7 +32,18 @@ if __name__ == '__main__':
     }
     xgb_clf = XGBClassifier(nthreads=-1)
 
-    best_xgb_model = best_model.get_best_model(x_train, y_train, model=xgb_clf, params=params, n_iter=500, cv=3)
+    best_xgb_model = best_model.get_best_model(x_train, y_train, model=xgb_clf, params=params, n_iter=200, cv=3)
 
     # predict
     print("predict")
+    y_predict = best_xgb_model.predict(x_test)
+
+    # convert nparray to dataframe
+    y_predict_df = pd.DataFrame()
+    y_predict_df["PassengerId"] = pd.read_csv("./data-titanic/test.csv")["PassengerId"]
+    y_predict_df["Survived"] = pd.DataFrame(y_predict, columns=['Survived'])
+
+    print(y_predict_df.head())
+    # y_predict_df["Survived"] = y_predict_df["Survived"].apply(lambda x: 1 if x > 0.5 else 0)
+    print("write to csv")
+    y_predict_df.to_csv("./data-titanic/xgb_submission.csv", index=False)

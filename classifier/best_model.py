@@ -3,6 +3,7 @@ import scipy.stats as st
 from sklearn.model_selection import RandomizedSearchCV
 import numpy as np
 import feature_engineering_titanic
+import time
 
 
 def report(results, n_top=3):
@@ -29,12 +30,13 @@ def get_best_model(X, y, model, params, n_iter=100, cv=3):
     random_search = RandomizedSearchCV(estimator=model, param_distributions=params, n_iter=n_iter, cv=cv, refit=True)
     random_search.fit(X, y)
 
-    report(random_search.cv_results_)
+    # report(random_search.cv_results_)
 
     print("best estimator : \n")
-    print(random_search.best_estimator_)
+    # print(random_search.best_estimator_)
+    print("return random_search")
 
-    return random_search.best_estimator_
+    return random_search
 
 
 if __name__ == '__main__':
@@ -51,4 +53,12 @@ if __name__ == '__main__':
         "leaf_size": st.randint(10, 2000)
     }
 
-    best_knn_model = get_best_model(x_train, y_train, model=knn, params=knn_params, n_iter=500, cv=3)
+    best_knn_model = get_best_model(x_train, y_train, model=knn, params=knn_params, n_iter=10, cv=3)
+
+    # predict
+    print("x_test.shape: " + x_test.shape)
+    print(x_test.shape)
+    print(time.time())
+    y_predict = best_knn_model.predict(x_test)
+    print(time.time())
+    print(y_predict)
