@@ -36,8 +36,7 @@ def get_best_model(X, y, model, params, n_iter=100, cv=3):
     report(random_search.cv_results_)
 
     print("best estimator : \n")
-    # print(random_search.best_estimator_)
-    print("return random_search")
+    print(random_search.best_estimator_)
 
     return random_search.best_estimator_
 
@@ -51,6 +50,7 @@ def save_csv(y, save_path):
     print(y_predict_df.head())
     # y_predict_df["Survived"] = y_predict_df["Survived"].apply(lambda x: 1 if x > 0.5 else 0)
     y_predict_df.to_csv(save_path, index=False)
+    print("predict result has been save : {}".format(save_path))
 
 
 if __name__ == '__main__':
