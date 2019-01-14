@@ -6,5 +6,5 @@
 
 * [LR]
 
-* [stacking](stacking) 
+* [stacking](classifier) 
 

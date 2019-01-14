@@ -1,4 +1,4 @@
-# Decided to try my hand at a very simple stacking script with 4 base models:
+# Decided to try my hand at a very simple classifier script with 4 base models:
 #           - Random Forest, AdaBoost, Extra Trees & GradBoost
 
 # Script takes about a cool X min to run
@@ -16,7 +16,7 @@ import pandas as pd
 import numpy as np
 import re as re
 import xgboost_model as xgb
-# Going to use these 4 base models for the stacking
+# Going to use these 4 base models for the classifier
 from sklearn.ensemble import RandomForestClassifier, AdaBoostClassifier, GradientBoostingClassifier, ExtraTreesClassifier
 from sklearn.svm import SVC
 from sklearn.model_selection import KFold
