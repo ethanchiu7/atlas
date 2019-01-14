@@ -1,3 +1,7 @@
 *.csv
 *.txt
 *.swp
+*.pyc
+.idea/**
+*.iml
+*.xml

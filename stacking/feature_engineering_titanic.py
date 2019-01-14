@@ -88,6 +88,7 @@ def split_xy(dataset, label_key):
 
     return dataset[label_key], dataset.drop(columns=label_key)
 
+
 def read_titanic():
     train_data = pd.read_csv("./data-titanic/train.csv")
     test_data = pd.read_csv("./data-titanic/test.csv")

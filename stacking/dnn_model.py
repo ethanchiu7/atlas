@@ -40,7 +40,7 @@ def get_best_dnn_model(X, y):
     random_search = RandomizedSearchCV(estimator=tf.estimator.DNNClassifier, param_distributions=params, n_iter=10, cv=3, refit=True)
     random_search.fit(X, y)
 
-    print("best knn estimator : \n")
+    print("best estimator : \n")
     print(random_search.best_estimator_)
 
     return random_search.best_estimator_
