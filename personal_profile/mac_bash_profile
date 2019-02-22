@@ -1,0 +1,32 @@
+# this is for mac ~/.bash_profile
+
+export PATH="/Users/zhaoxin/bin:$PATH"
+
+
+alias findcpp='find  -depth -type f -iname "*.cpp" | xargs grep --color -nE -ir'
+alias findh='find  -depth -type f -iname "*.h" | xargs grep --color -nE -ir'
+alias findpy='find  -depth -type f -iname "*.py" | xargs grep --color -nE -ir'
+alias findsh='find  -depth -type f -iname "*.sh" | xargs grep --color -nE -ir'
+
+# ------ GNU COMMAND ------
+alias date='gdate'
+alias readlink="greadlink"
+alias ll='ls -lG'
+
+# --- TensorFlow Config ---
+# if you're on Unix. Tensorflow is working fine anyway, but you won't see these annoying warnings
+export TF_CPP_MIN_LOG_LEVEL=2
+
+#  add tensorflow models to Python path
+export PYTHONPATH="$PYTHONPATH:/Users/zhaoxin/PycharmProjects/models"
+
+# ----- ssh conf
+PASSWORD=""
+username=""
+rolename=""
+ip_1=""
+ip_2=""
+port_1=""
+port_2=""
+
+alias go_online="sshpass -p ${PASSWORD} ssh -p ${port_1} ${username}@rolename@${ip_1}@${port_2}@${ip_2}"
