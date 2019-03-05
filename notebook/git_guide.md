@@ -36,3 +36,21 @@
     git merge origin/master
     cd ..
     scons install
+    
+# 忘记新建分支
+
+    git stash
+    git fetch
+    git merge origin/master
+    git checkout -b new_branch_name
+    git stash pop
+    
+
+# 提交错了分支
+
+    git reset HEAD^
+    git stash
+    git fetch
+    git merge origin/master
+    git checkout -b new_branch_name
+    git stash pop
