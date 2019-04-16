@@ -13,6 +13,9 @@
     # 删除远端分支
     git push origin --delete <branchName>
     
+    # set tracking information for this branch
+    git branch --set-upstream-to=origin/<branch>
+    
 # merge
 
 # HTTP免密码
