@@ -15,6 +15,18 @@
     
 # merge
 
+# HTTP免密码
+
+    # 1.配置保存密码【长期】
+    git config --global credential.helper store
+    # 2.配置保存密码【短期】
+    # 默认15分钟
+    git config --global credential.helper cache
+    git config credential.helper 'cache --timeout=3600'
+    
+    # 3.增加远程地址的时候带上密码
+    git clone http://yourname:password@git.oschina.net/name/project.git
+
 # cherry-pick
     
     # 获取其他分支某个提交
