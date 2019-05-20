@@ -1,0 +1,209 @@
+#!/bin/sh
+source ~/.bashrc
+# dependence : sshpass
+USER_NAME=""
+PASSWORD=""
+ROLE_NAME=""
+
+HOST_NAME=""
+HOST_IP=""
+
+HOST_FULL_NAME="${USER_NAME}@${ROLE_NAME}@${HOST_IP}@xx@xx.cn"
+PORT="xx"
+SIT_REPO=/home/${ROLE_NAME}/${USER_NAME}/SIT_REPO
+
+
+# --------
+THIS_DIR=$(DIRNAME=$(dirname "$0"); cd "$DIRNAME"; pwd)
+THIS_FILE=$(basename "$0")
+THIS_PATH="$THIS_DIR/$THIS_FILE"
+CURR_DIR=$(pwd)
+
+echo "THIS_DIR: $THIS_DIR"
+echo "THIS_FILE: $THIS_FILE"
+echo "CURR_DIR: $CURR_DIR"
+
+# config which file can be packaged
+declare -a INCLUDE=('*.py' '*.sh' '*.conf' '*.config' '*.md' '*README*')
+# declare -a EXCLUDE=("*.txt" "*.csv" "*.sql")
+
+function usage() {
+USAGE="
+sit --> Simulate Git Author by Ethan Jo
+options error: $1
+usage: $0 [options]
+    clone  mkdir project then update project from host
+    push   package src codes then send to host
+    pull   update project from host
+"
+printf "%s\\n" "$USAGE"
+exit 0
+}
+if [ $# -eq 0 ]; then
+    usage
+fi
+
+function VERIFY_STATUS()
+{
+
+    # verify exit status of the last executed command
+    if [ $# -lt 1 ]; then
+        echo "the exit status of the last executed command should be given, EXIT 1"
+        exit 1
+    fi
+    if [ $# -eq 1 ]; then
+        status=$1
+        if [ ${status} -ne 0 ]; then
+            echo "last executed command failed , EXIT 1"
+            exit 1
+        fi
+        return 0
+
+    elif [ $# -eq 2 ]; then
+        status=$1
+        job_name=$2
+        if [ ${status} -ne 0 ]; then
+            echo "${job_name} failed , EXIT 1"
+            exit 1
+        fi
+        return 0
+    fi
+
+    echo "VERIFY_STATUS : param ERROR, EXIT 1"
+    exit 1
+}
+
+function push() {
+    echo "start push $1 ..."
+    if [ "X$1" == "X" ]; then
+        echo "consider the ${CURR_DIR} is the project to push"
+        PROJECT_NAME=$(echo ${CURR_DIR} | awk -F '/' '{print $NF}')
+    else
+        echo "consider the $1 is the project to push"
+        exit 0
+    fi
+    echo "PROJECT_NAME: ${PROJECT_NAME}"
+
+    # package
+    NAME_DELETE=""
+    for i in ${INCLUDE[@]}
+    do
+        if [ "X${NAME_DELETE}" != "X" ]; then
+            NAME_DELETE="${NAME_DELETE} -or"
+        fi
+        NAME_DELETE="${NAME_DELETE} -name ${i}"
+    done
+
+    # find . -name '*.py' -or -name '*.sh'
+    echo "find . ${NAME_DELETE} | tar -zcvf ${PROJECT_NAME}.sit --files-from -"
+    find . ${NAME_DELETE} | tar -zcvf ${PROJECT_NAME}.sit --files-from -
+
+    # send to origin
+    # push tar
+    echo "scp -P ${PORT} ./${PROJECT_NAME}.sit ${HOST_FULL_NAME}:${SIT_REPO}"
+    sshpass -p ${PASSWORD} scp -P ${PORT} ./${PROJECT_NAME}.sit ${HOST_FULL_NAME}:${SIT_REPO}
+    VERIFY_STATUS $? "send sit file to host failed"
+    # check
+    # clear
+    rm -f ./${PROJECT_NAME}.sit
+
+    echo ">>> sit push ${PROJECT_NAME} SUCCESS <<<"
+
+}
+
+function pull() {
+    echo "start pull $1 ..."
+    if [ "X$1" == "X" ]; then
+        echo "consider the ${CURR_DIR} is the project to push"
+        PROJECT_NAME=$(echo ${CURR_DIR} | awk -F '/' '{print $NF}')
+    else
+        echo "consider the $1 is the project to push"
+        exit 1
+    fi
+    echo "PROJECT_NAME: ${PROJECT_NAME}"
+
+    # check hostname then get sit file
+    if [ "X$(hostname)" == "X${HOST_NAME}" ]; then
+        echo "This is the HOST"
+        echo "cp ${SIT_REPO}/${PROJECT_NAME}.sit ./"
+        cp ${SIT_REPO}/${PROJECT_NAME}.sit ./
+        VERIFY_STATUS $? "cp ${SIT_REPO}/${PROJECT_NAME}.sit failed"
+    else
+        echo "scp ${ROLE_NAME}@${HOST_IP}:${SIT_REPO}/${PROJECT_NAME}.sit ./"
+        scp ${ROLE_NAME}@${HOST_IP}:${SIT_REPO}/${PROJECT_NAME}.sit ./
+        VERIFY_STATUS $? "scp ${SIT_REPO}/${PROJECT_NAME}.sit failed"
+    fi
+
+    # override
+    # find . -name '*.py' -delete -or -name '*.sh' -delete
+    NAME_DELETE=""
+    for i in ${INCLUDE[@]}
+    do
+        if [ "X${NAME_DELETE}" != "X" ]; then
+            NAME_DELETE="${NAME_DELETE} -or"
+        fi
+        NAME_DELETE="${NAME_DELETE} -name ${i} -delete"
+    done
+    echo "find . ${NAME_DELETE}"
+    find . ${NAME_DELETE}
+    tar -zxvf ./${PROJECT_NAME}.sit
+    echo ">>> sit pull ${PROJECT_NAME} SUCCESS <<<"
+
+    # clear
+    rm -f ./${PROJECT_NAME}.sit
+}
+
+function clone() {
+    echo "start clone $1 ..."
+    if [ "X$1" == "X" ]; then
+        echo "Which project you want to clone"
+        exit 1
+    else
+        PROJECT_NAME=$1
+        echo "${PROJECT_NAME} is going to be cloned in ${CURR_DIR}"
+    fi
+    echo "PROJECT_NAME: ${1}"
+    if [ ! -d ${CURR_DIR}/${PROJECT_NAME} ]; then
+        mkdir -p ${CURR_DIR}/${PROJECT_NAME}
+    fi
+    cd ${CURR_DIR}/${PROJECT_NAME}
+
+    # use sit outside
+    sit pull
+    VERIFY_STATUS $? "sit clone failed after reuse sit pull"
+
+    echo ">>> sit clone ${PROJECT_NAME} SUCCESS <<<"
+}
+
+POSITIONAL=()
+while [[ $# -gt 0 ]]
+do
+key="$1"
+case $key in
+    -c|clone)
+    CLONE="$2"
+    clone ${CLONE}
+    exit 0
+    ;;
+    -p|push)
+    PUSH="$2"
+    push ${PUSH}
+    exit 0
+    ;;
+    -l|pull)
+    PULL="$2"
+    pull ${PULL}
+    exit 0
+    ;;
+    --default)
+    DEFAULT=YES
+    shift # past argument
+    ;;
+    *)    # unknown option
+    POSITIONAL+=("$1") # save it in an array for later
+    usage $POSITIONAL
+    exit 0
+    ;;
+esac
+done
+set -- "${POSITIONAL[@]}" # restore positional parameters
