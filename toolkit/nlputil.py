@@ -1,9 +1,13 @@
 # https://www.kaggle.com/abhishek/approaching-almost-any-nlp-problem-on-kaggle
+# https://www.kaggle.com/nholloway/the-effect-of-word-embeddings-on-bias
 import numpy as np
+import pickle
 from tqdm import tqdm
 from nltk import word_tokenize
 from nltk.corpus import stopwords
 from keras import Sequential
+from keras.preprocessing.text import Tokenizer
+import keras.preprocessing.sequence
 from keras.layers import Embedding, LSTM, Dense, SpatialDropout1D, Dropout, Activation
 stop_words = stopwords.words('english')
 
@@ -34,8 +38,30 @@ def get_word_index(word_count, num_words=None, verbose=False):
     return word_index, index_word
 
 
+def get_tokenizer(sentence_list):
+    """
+    :param sentence_list:
+    :return:
+    x_train = tokenizer.texts_to_sequences(x_train)
+    x_val = tokenizer.texts_to_sequences(x_val)
+
+    x_train = sequence.pad_sequences(x_train, maxlen=MAX_LEN)
+    x_val = sequence.pad_sequences(x_val, maxlen=MAX_LEN)
+    """
+    tokenizer = Tokenizer()
+    tokenizer.fit_on_texts(sentence_list)
+    return tokenizer
+
+
+def load_word_embeddings(path):
+    def get_coefs(word, *arr):
+        return word, np.asarray(arr, dtype='float32')
+    with open(path) as f:
+        return dict(get_coefs(*line.strip().split(' ')) for line in f)
+
+
 # load the GloVe vectors in a dictionary
-def get_glove_vectors(file_path='glove.840B.300d.txt', verbose=0):
+def load_glove_vectors(file_path='glove.840B.300d.txt', verbose=0):
     word_embedding = {}
     f = open(file_path)
     for line in tqdm(f):
@@ -50,13 +76,41 @@ def get_glove_vectors(file_path='glove.840B.300d.txt', verbose=0):
 
 
 # create an embedding matrix for the words we have in the dataset
-def get_embedding_matrix(word_index, word_embedding, embedding_dim=300):
+def build_embedding_matrix(word_index, word_embedding, embedding_dim=300):
     embedding_matrix = np.zeros((len(word_index) + 1, embedding_dim))
     for word, i in tqdm(word_index.items()):
         embedding_vector = word_embedding.get(word)
         if embedding_vector is not None:
             embedding_matrix[i] = embedding_vector
     return embedding_matrix
+
+
+# pip install bert_embedding
+from bert_embedding import BertEmbedding
+def load_word_embeddings_bert(tokenizer=None, vocab=None, save_path='../input/bert.768.pkl'):
+    # %%time
+    # Total CPU time (my machine): 1d 4h 7min
+    if vocab is None:
+        vocab = list(tokenizer.word_index.keys())
+    bert_embedding = BertEmbedding()
+    embedding_results = bert_embedding(vocab)
+    bert_embeddings = {}
+    for emb in embedding_results:
+        try:
+            bert_embeddings[emb[0][0]] = emb[1][0]
+        except:
+            pass
+    with open(save_path, 'wb') as f:
+        pickle.dump(bert_embeddings, f)
+
+
+# https://pypi.org/project/bert-embedding/
+def sentences_embedding_bert(sentence_list):
+    bert_embedding = BertEmbedding()
+    # test = ['मुझे चीन से प्यार है']
+    # bert_embedding(test)
+    result = bert_embedding(sentence_list)
+    return result
 
 
 # A simple LSTM with glove embeddings and two dense layers
