@@ -111,3 +111,27 @@ function ERASE_DIR() {
         mkdir -p ${dir}
     fi
 }
+
+function BACKUP() {
+    FILE_PATH=$1
+    NEW_FILE_DIR=$2
+    RESULT_TS=$(date "+%s")
+    file_name=$(echo ${FILE_PATH} | awk -F '/' '{print $NF}')
+    NOTICE "cp ${FILE_PATH} ${NEW_FILE_DIR}/${file_name}.${RESULT_TS}"
+    cp ${FILE_PATH} ${NEW_FILE_DIR}/${file_name}.${RESULT_TS}
+}
+
+function CLEANDIR() {
+    DIR=$1
+    KEYWORD=$2
+    if [ $# -eq 2 ]; then
+        EXPIRE_DAYS=1
+    elif [ $# -eq 3 ]; then
+        EXPIRE_DAYS=$3
+    fi
+    # clean data
+    # find ${DIR} -name "*${KEYWORD}*" -mtime ${EXPIRE_DAYS} -delete -or -name "*txt" -mtime ${EXPIRE_DAYS} -delete
+    # clean log
+    # find ${PROJECT_PATH}/log -name "*log" -mtime ${EXPIRE_DAYS} -delete -or -name "*.txt" -mtime ${EXPIRE_DAYS} -delete
+    find ${DIR} -name "*${KEYWORD}*" -mtime ${EXPIRE_DAYS} -delete
+}
