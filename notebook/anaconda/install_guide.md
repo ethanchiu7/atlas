@@ -1,3 +1,11 @@
+# install in Linux 
+
+    # find the lastest anaconda package
+    https://repo.continuum.io/archive/
+    
+    # py3 : Anaconda3-2018.12-Linux-x86_64.sh
+    wget http://repo.continuum.io/archive/Anaconda2-4.3.0-Linux-x86_64.sh
+
 # alternate channels
     # do this after install conda
     conda config --add channels conda-forge
@@ -11,14 +19,6 @@
     conda install numpy=1.9.3
     # or update
     conda update numpy=1.93
-
-# install in Linux 
-
-    # find the lastest anaconda package
-    https://repo.continuum.io/archive/
-    
-    # py3 : Anaconda3-2018.12-Linux-x86_64.sh
-    wget http://repo.continuum.io/archive/Anaconda2-4.3.0-Linux-x86_64.sh
     
 # GLIBC
 
