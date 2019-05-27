@@ -42,9 +42,10 @@ def get_tokenizer(sentence_list):
     """
     :param sentence_list:
     :return:
+    word_index = tokenizer.word_index
+
     x_train = tokenizer.texts_to_sequences(x_train)
     x_val = tokenizer.texts_to_sequences(x_val)
-
     x_train = sequence.pad_sequences(x_train, maxlen=MAX_LEN)
     x_val = sequence.pad_sequences(x_val, maxlen=MAX_LEN)
     """
