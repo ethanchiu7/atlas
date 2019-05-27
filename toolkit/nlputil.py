@@ -6,7 +6,7 @@ from tqdm import tqdm
 from nltk import word_tokenize
 from nltk.corpus import stopwords
 from keras import Sequential
-from keras.preprocessing.text import Tokenizer
+from keras.preprocessing import text, sequence
 import keras.preprocessing.sequence
 from keras.layers import Embedding, LSTM, Dense, SpatialDropout1D, Dropout, Activation
 stop_words = stopwords.words('english')
@@ -49,40 +49,50 @@ def get_tokenizer(sentence_list):
     x_train = sequence.pad_sequences(x_train, maxlen=MAX_LEN)
     x_val = sequence.pad_sequences(x_val, maxlen=MAX_LEN)
     """
-    tokenizer = Tokenizer()
+    # CHARS_TO_REMOVE = '!"#$%&()*+,-./:;<=>?@[\\]^_`{|}~\t\n“”’\'∞θ÷α•à−β∅³π‘₹´°£€\×™√²—'
+    # tokenizer = Tokenizer(filters=CHARS_TO_REMOVE)
+    tokenizer = text.Tokenizer()
     tokenizer.fit_on_texts(sentence_list)
     return tokenizer
 
 
-def load_word_embeddings(path):
+def load_word_embeddings(path, word_index=None, seq=' ', verbose=True):
+    if word_index:
+        assert isinstance(word_index, (dict, set))
+
     def get_coefs(word, *arr):
         return word, np.asarray(arr, dtype='float32')
-    with open(path) as f:
-        return dict(get_coefs(*line.strip().split(' ')) for line in f)
-
-
-# load the GloVe vectors in a dictionary
-def load_glove_vectors(file_path='glove.840B.300d.txt', verbose=0):
     word_embedding = {}
-    f = open(file_path)
-    for line in tqdm(f):
-        values = line.split()
-        word = values[0]
-        coefs = np.asarray(values[1:], dtype='float32')
-        word_embedding[word] = coefs
-    f.close()
-    if verbose > 0:
-        print('Found %s word vectors.' % len(word_embedding))
+    total_words = 0
+    load_words = 0
+    with open(path) as f:
+        for line in tqdm(f, disable=(not verbose)):
+            word, coefs = get_coefs(*line.strip().split(seq))
+            total_words += 1
+            if word_index:
+                if word not in word_index:
+                    continue
+            word_embedding[word] = coefs
+            load_words += 1
+    if verbose:
+        embedding_dim = len(next(iter(word_embedding.values())))
+        print(f"has been load {load_words} words from total {total_words} words by path : {path}")
+        print(f"embedding dim : {embedding_dim}")
     return word_embedding
 
 
 # create an embedding matrix for the words we have in the dataset
-def build_embedding_matrix(word_index, word_embedding, embedding_dim=300):
+def build_embedding_matrix(word_index, word_embedding, verbose=True):
+    embedding_dim = len(next(iter(word_embedding.values())))
     embedding_matrix = np.zeros((len(word_index) + 1, embedding_dim))
-    for word, i in tqdm(word_index.items()):
+    for word, i in tqdm(word_index.items(), disable=(not verbose)):
         embedding_vector = word_embedding.get(word)
         if embedding_vector is not None:
             embedding_matrix[i] = embedding_vector
+    if verbose:
+        print(f"word_index len : {len(word_index)}")
+        print(f"embedding dim : {embedding_dim}")
+        print(f"embedding_matrix shape : {embedding_matrix.shape}")
     return embedding_matrix
 
 
@@ -112,30 +122,6 @@ def sentences_embedding_bert(sentence_list):
     # bert_embedding(test)
     result = bert_embedding(sentence_list)
     return result
-
-
-# A simple LSTM with glove embeddings and two dense layers
-def get_lstm_model_with_embedding_matrix(word_index, embedding_dim=300, input_length=70, embedding_matrix=None):
-    model = Sequential()
-    model.add(Embedding(len(word_index) + 1,
-                        embedding_dim,
-                        weights=[embedding_matrix],
-                        input_length=input_length,
-                        trainable=False))
-    model.add(SpatialDropout1D(0.3))
-    model.add(LSTM(100, dropout=0.3, recurrent_dropout=0.3))
-
-    model.add(Dense(1024, activation='relu'))
-    model.add(Dropout(0.8))
-
-    model.add(Dense(1024, activation='relu'))
-    model.add(Dropout(0.8))
-
-    model.add(Dense(3))
-    model.add(Activation('softmax'))
-    model.compile(loss='categorical_crossentropy', optimizer='adam')
-
-    return model
 
 
 # this function creates a normalized vector for the whole sentence

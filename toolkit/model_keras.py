@@ -1,4 +1,5 @@
-# https://www.kaggle.com/christofhenkel/keras-baseline-lstm-attention-5-fold/#data
+from keras.models import Sequential
+from keras.layers import Dense, Embedding, Dropout, Activation, LSTM, SpatialDropout1D
 from keras import backend as K
 from keras.engine.topology import Layer
 from keras import initializers, regularizers, constraints, optimizers, layers
@@ -74,33 +75,26 @@ class Attention(Layer):
         return input_shape[0],  self.features_dim
 
 
-import keras.layers as L
-from keras.models import Model
-from keras.optimizers import Adam
+# A simple LSTM with glove embeddings and two dense layers
+def build_model_lstm_embedded(input_length=70, embedding_matrix=None):
+    model = Sequential()
+    model.add(Embedding(*embedding_matrix.shape,
+                        weights=[embedding_matrix],
+                        input_length=input_length,
+                        trainable=False))
+    model.add(SpatialDropout1D(0.3))
+    model.add(LSTM(100, dropout=0.3, recurrent_dropout=0.3))
 
+    model.add(Dense(1024, activation='relu'))
+    model.add(Dropout(0.8))
 
-def build_model_attention(verbose=False, compile=True, maxlen=200, embedding_matrix=None):
-    sequence_input = L.Input(shape=(maxlen,), dtype='int32')
-    embedding_layer = L.Embedding(*embedding_matrix.shape,
-                                weights=[embedding_matrix],
-                                input_length=maxlen,
-                                trainable=False)
-    x = embedding_layer(sequence_input)
-    x = L.SpatialDropout1D(0.2)(x)
-    x = L.Bidirectional(L.CuDNNLSTM(64, return_sequences=True))(x)
+    model.add(Dense(1024, activation='relu'))
+    model.add(Dropout(0.8))
 
-    att = Attention(maxlen)(x)
-    avg_pool1 = L.GlobalAveragePooling1D()(x)
-    max_pool1 = L.GlobalMaxPooling1D()(x)
+    model.add(Dense(3))
+    model.add(Activation('softmax'))
+    model.compile(loss='categorical_crossentropy', optimizer='adam')
 
-    x = L.concatenate([att,avg_pool1, max_pool1])
-
-    preds = L.Dense(1, activation='sigmoid')(x)
-
-
-    model = Model(sequence_input, preds)
-    if verbose:
-        model.summary()
-    if compile:
-        model.compile(loss='binary_crossentropy', optimizer=Adam(0.005), metrics=['acc'])
     return model
+
+
