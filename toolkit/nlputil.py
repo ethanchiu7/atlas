@@ -50,7 +50,7 @@ def get_tokenizer(sentence_list):
     x_val = sequence.pad_sequences(x_val, maxlen=MAX_LEN)
     """
     # CHARS_TO_REMOVE = '!"#$%&()*+,-./:;<=>?@[\\]^_`{|}~\t\n“”’\'∞θ÷α•à−β∅³π‘₹´°£€\×™√²—'
-    # tokenizer = Tokenizer(filters=CHARS_TO_REMOVE)
+    # tokenizer = text.Tokenizer(filters=CHARS_TO_REMOVE)
     tokenizer = text.Tokenizer()
     tokenizer.fit_on_texts(sentence_list)
     return tokenizer
@@ -66,6 +66,8 @@ def load_word_embeddings(path, word_index=None, seq=' ', verbose=True):
     total_words = 0
     load_words = 0
     with open(path) as f:
+        if verbose:
+            print(f"loading word embedding from path : {path} ...")
         for line in tqdm(f, disable=(not verbose)):
             word, coefs = get_coefs(*line.strip().split(seq))
             total_words += 1
@@ -82,10 +84,14 @@ def load_word_embeddings(path, word_index=None, seq=' ', verbose=True):
 
 
 # create an embedding matrix for the words we have in the dataset
-def build_embedding_matrix(word_index, word_embedding, verbose=True):
+def build_embedding_matrix(word_index, word_embedding, lower=True, verbose=True):
     embedding_dim = len(next(iter(word_embedding.values())))
     embedding_matrix = np.zeros((len(word_index) + 1, embedding_dim))
+    if verbose:
+        print(f"building embedding matrix by word_index ...")
     for word, i in tqdm(word_index.items(), disable=(not verbose)):
+        if lower:
+            word = str(word).lower()
         embedding_vector = word_embedding.get(word)
         if embedding_vector is not None:
             embedding_matrix[i] = embedding_vector
