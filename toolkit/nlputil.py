@@ -14,8 +14,8 @@ stop_words = stopwords.words('english')
 
 def get_word_count(sentences, verbose=True):
     """
-    :param verbose:
     :param sentences: list of list of words
+    :param verbose:
     :return: dictionary of words and their count
     """
     word_count = {}
@@ -28,8 +28,7 @@ def get_word_count(sentences, verbose=True):
     return word_count
 
 
-def get_word_index(word_count, num_words=None, verbose=False):
-    word_index = {}
+def get_word_index(word_count, num_words=None, verbose=True):
     word_index = sorted(word_count.items(), key=lambda kv: kv[1])[::-1][:num_words]
     word_index = {value[0]: index for index, value in enumerate(word_index)}
     index_word = {word_index[word]: word for word in word_index}
@@ -51,6 +50,7 @@ def get_tokenizer(sentence_list):
     """
     # CHARS_TO_REMOVE = '!"#$%&()*+,-./:;<=>?@[\\]^_`{|}~\t\n“”’\'∞θ÷α•à−β∅³π‘₹´°£€\×™√²—'
     # tokenizer = text.Tokenizer(filters=CHARS_TO_REMOVE)
+    assert isinstance(sentence_list, list)
     tokenizer = text.Tokenizer()
     tokenizer.fit_on_texts(sentence_list)
     return tokenizer
