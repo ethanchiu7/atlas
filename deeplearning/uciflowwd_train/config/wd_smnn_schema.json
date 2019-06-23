@@ -1,0 +1,207 @@
+{
+    "read": {
+        "feature_type": "fixed_len",
+        "value_type": "int64"
+    },
+    "reco_id": {
+        "feature_type": "fixed_len",
+        "value_type": "string"
+    },
+    "app": {
+        "feature_type": "fixed_len",
+        "value_type": "string"
+    },
+    "utdid": {
+        "feature_type": "fixed_len",
+        "value_type": "string"
+    },
+    "chid": {
+        "feature_type": "fixed_len",
+        "value_type": "string"
+    },
+    "item_type": {
+        "feature_type": "fixed_len",
+        "value_type": "int64"
+    },
+    "style_type": {
+        "feature_type": "fixed_len",
+        "value_type": "int64"
+    },
+    "gra_nw": {
+        "feature_type": "fixed_len",
+        "value_type": "string"
+    },
+    "gra_mi": {
+        "feature_type": "fixed_len",
+        "value_type": "string"
+    },
+    "gra_isp": {
+        "feature_type": "fixed_len",
+        "value_type": "string"
+    },
+    "gra_ve": {
+        "feature_type": "fixed_len",
+        "value_type": "string"
+    },
+    "new_act_level": {
+        "feature_type": "fixed_len",
+        "value_type": "string"
+    },
+    "lbs_prov": {
+        "feature_type": "fixed_len",
+        "value_type": "string"
+    },
+    "lbs_city": {
+        "feature_type": "fixed_len",
+        "value_type": "string"
+    },
+    "item_id": {
+        "feature_type": "fixed_len",
+        "value_type": "string"
+    },
+    "ct_lang": {
+        "feature_type": "fixed_len",
+        "value_type": "string"
+    },
+    "source": {
+        "feature_type": "fixed_len",
+        "value_type": "string"
+    },
+    "pub_tm": {
+        "feature_type": "fixed_len",
+        "value_type": "string"
+    },
+    "is_top": {
+        "feature_type": "fixed_len",
+        "value_type": "string"
+    },
+    "act_level": {
+        "feature_type": "fixed_len",
+        "value_type": "string"
+    },
+    "is_cdst_user": {
+        "feature_type": "fixed_len",
+        "value_type": "string"
+    },
+    "rt_ctr": {
+        "feature_type": "fixed_len",
+        "value_type": "float"
+    },
+    "ToCtr": {
+        "feature_type": "fixed_len",
+        "value_type": "float"
+    },
+    "PreCtr": {
+        "feature_type": "fixed_len",
+        "value_type": "float"
+    },
+    "rt_pv": {
+        "feature_type": "fixed_len",
+        "value_type": "float"
+    },
+    "ToPv": {
+        "feature_type": "fixed_len",
+        "value_type": "float"
+    },
+    "PrePv": {
+        "feature_type": "fixed_len",
+        "value_type": "float"
+    },
+    "rt_clk": {
+        "feature_type": "fixed_len",
+        "value_type": "float"
+    },
+    "ToClk": {
+        "feature_type": "fixed_len",
+        "value_type": "float"
+    },
+    "PreClk": {
+        "feature_type": "fixed_len",
+        "value_type": "float"
+    },
+    "site": {
+        "feature_type": "fixed_len",
+        "value_type": "string"
+    },
+    "tm": {
+        "feature_type": "fixed_len",
+        "value_type": "string"
+    },
+    "tmhour": {
+        "feature_type": "fixed_len",
+        "value_type": "string"
+    },
+    "pub_tm_tonow": {
+        "feature_type": "fixed_len",
+        "value_type": "float"
+    },
+    "read_is_rf": {
+        "feature_type": "fixed_len",
+        "value_type": "float"
+    },
+    "read_tm_vl": {
+        "feature_type": "fixed_len",
+        "value_type": "float"
+    },
+    "read_tm_vl2": {
+        "feature_type": "fixed_len",
+        "value_type": "float"
+    },
+    "weight": {
+        "feature_type": "fixed_len",
+        "value_type": "float"
+    },
+    "cate_id": {
+        "feature_type": "var_len",
+        "value_type": "string",
+        "value_shape": "20"
+    },
+    "stL1C": {
+        "feature_type": "var_len",
+        "value_type": "string",
+        "value_shape": "20"
+    },
+    "stL2C": {
+        "feature_type": "var_len",
+        "value_type": "string",
+        "value_shape": "20"
+    },
+    "L1C": {
+        "feature_type": "var_len",
+        "value_type": "string",
+        "value_shape": "20"
+    },
+    "L2C": {
+        "feature_type": "var_len",
+        "value_type": "string",
+        "value_shape": "20"
+    },
+    "stTag": {
+        "feature_type": "var_len",
+        "value_type": "string",
+        "value_shape": "20"
+    },
+    "user_lt_top_cate": {
+        "feature_type": "var_len",
+        "value_type": "string",
+        "value_shape": "20"
+    },
+    "ClkI": {
+        "feature_type": "var_len",
+        "value_type": "string",
+        "value_shape": "20"
+    },
+    "ltClkItems": {
+        "feature_type": "var_len",
+        "value_type": "string",
+        "value_shape": "50"
+    },
+    "pos": {
+        "feature_type": "fixed_len",
+        "value_type": "string"
+    },
+    "spam_reason": {
+        "feature_type": "fixed_len",
+        "value_type": "string"
+    }
+}

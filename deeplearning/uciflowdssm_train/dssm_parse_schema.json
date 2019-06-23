@@ -1,0 +1,246 @@
+{
+    "fixed_len_feature": {
+        "cate_id_l1": {
+            "column_name": "cate_id_l1",
+            "default_value": "",
+            "max_len": 1
+        },
+        "reco_id": {
+            "column_name": "reco_id",
+            "default_value": "",
+            "max_len": 1
+        },
+        "read": {
+            "column_name": "read",
+            "default_value": 0,
+            "max_len": 1
+        },
+        "app": {
+            "column_name": "app",
+            "default_value": "",
+            "max_len": 1
+        },
+        "utdid": {
+            "column_name": "utdid",
+            "default_value": "",
+            "max_len": 1
+        },
+        "chid": {
+            "column_name": "chid",
+            "default_value": "",
+            "max_len": 1
+        },
+        "item_id": {
+            "column_name": "item_id",
+            "default_value": "",
+            "max_len": 1
+        },
+        "ct_lang": {
+            "column_name": "ct_lang",
+            "default_value": "",
+            "max_len": 1
+        },
+        "source": {
+            "column_name": "source",
+            "default_value": "",
+            "max_len": 1
+        },
+        "pub_tm": {
+            "column_name": "pub_tm",
+            "default_value": "",
+            "max_len": 1
+        },
+        "pos": {
+            "column_name": "pos",
+            "default_value": "",
+            "max_len": 1
+        },
+        "is_top": {
+            "column_name": "is_top",
+            "default_value": "",
+            "max_len": 1
+        },
+        "rt_pv": {
+            "column_name": "rt_pv",
+            "default_value": 0.0,
+            "max_len": 1
+        },
+        "rt_clk": {
+            "column_name": "rt_clk",
+            "default_value": 0.0,
+            "max_len": 1
+        },
+        "rt_ctr": {
+            "column_name": "rt_ctr",
+            "default_value": 0.0,
+            "max_len": 1
+        },
+        "ToPv": {
+            "column_name": "ToPv",
+            "default_value": 0.0,
+            "max_len": 1
+        },
+        "ToClk": {
+            "column_name": "ToClk",
+            "default_value": 0.0,
+            "max_len": 1
+        },
+        "ToCtr": {
+            "column_name": "ToCtr",
+            "default_value": 0.0,
+            "max_len": 1
+        },
+        "PrePv": {
+            "column_name": "PrePv",
+            "default_value": 0.0,
+            "max_len": 1
+        },
+        "PreClk": {
+            "column_name": "PreClk",
+            "default_value": 0.0,
+            "max_len": 1
+        },
+        "PreCtr": {
+            "column_name": "PreCtr",
+            "default_value": 0.0,
+            "max_len": 1
+        },
+        "site": {
+            "column_name": "site",
+            "default_value": "",
+            "max_len": 1
+        },
+        "tm": {
+            "column_name": "tm",
+            "default_value": "",
+            "max_len": 1
+        },
+        "tmhour": {
+            "column_name": "tmhour",
+            "default_value": "",
+            "max_len": 1
+        },
+        "pub_tm_tonow": {
+            "column_name": "pub_tm_tonow",
+            "default_value": "0.0",
+            "max_len": 1
+        },
+        "weight": {
+            "column_name": "weight",
+            "default_value": "1.0",
+            "max_len": 1
+        },
+        "item_type": {
+            "column_name": "item_type",
+            "default_value": "",
+            "max_len": 1
+        },
+        "style_type": {
+            "column_name": "style_type",
+            "default_value": "",
+            "max_len": 1
+        },
+        "content_type": {
+            "column_name": "content_type",
+            "default_value": "",
+            "max_len": 1
+        }
+    },
+    "var_len_feature": {
+        "cate_id": {
+            "column_name": "cate_id",
+            "max_len": 20
+        },
+        "stL1C": {
+            "column_name": "stL1C",
+            "max_len": 20
+        },
+        "stL2C": {
+            "column_name": "stL2C",
+            "max_len": 20
+        },
+        "L1C": {
+            "column_name": "L1C",
+            "max_len": 20
+        },
+        "L2C": {
+            "column_name": "L2C",
+            "max_len": 20
+        },
+        "ltClkItems": {
+            "column_name": "ltClkItems",
+            "max_len": 50
+        },
+        "ClkI": {
+            "column_name": "ClkI",
+            "max_len": 20
+        },
+        "Clk2I": {
+            "column_name": "Clk2I",
+            "max_len": 20
+        },
+        "sessClkI": {
+            "column_name": "sessClkI",
+            "max_len": 20
+        },
+        "NotClkI2": {
+            "column_name": "NotClkI2",
+            "max_len": 20
+        },
+        "pos_tag": {
+            "column_name": "pos_tag",
+            "max_len": 20
+        },
+        "neg_tag": {
+            "column_name": "neg_tag",
+            "max_len": 20
+        },
+        "pos_cat": {
+            "column_name": "pos_cat",
+            "max_len": 20
+        },
+        "neg_cat": {
+            "column_name": "neg_cat",
+            "max_len": 20
+        },
+        "itag": {
+            "column_name": "itag",
+            "max_len": 20
+        },
+        "wtTagClkI": {
+            "column_name": "wtTagClkI",
+            "max_len": 30
+        },
+        "mtTagClkI": {
+            "column_name": "mtTagClkI",
+            "max_len": 30
+        },
+        "ltTagClkI": {
+            "column_name": "ltTagClkI",
+            "max_len": 30
+        },
+        "extTagClkI": {
+            "column_name": "extTagClkI",
+            "max_len": 30
+        },
+        "mergeTagClkI": {
+            "column_name": "mergeTagClkI",
+            "max_len": 30
+        },
+        "channelClkI": {
+            "column_name": "channelClkI",
+            "max_len": 20
+        },
+        "stTag": {
+            "column_name": "stTag",
+            "max_len": 20
+        },
+        "user_lt_top_cate": {
+            "column_name": "user_lt_top_cate",
+            "max_len": 20
+        }
+    },
+    "sparse_feature": {
+        
+    }
+}

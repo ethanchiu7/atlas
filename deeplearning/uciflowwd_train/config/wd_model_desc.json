@@ -1,0 +1,831 @@
+{
+  "tensorTransform": [
+    {
+      "name": "sparse_column_with_keys",
+      "parameters": {
+        "input_tensor": "app",
+        "output_tensor": "app_keys",
+        "keys": ["app_iflow", "app_iflow_preloaded", "browser_iflow"],
+        "wide_or_deep" : "",
+        "dtype": "string"
+      }
+    },
+    {
+      "name": "sparse_column_with_hash_bucket",
+      "parameters": {
+        "input_tensor": "utdid",
+        "output_tensor": "utdid_hash",
+        "wide_or_deep" : "",
+        "hash_bucket_size": 20000000,
+        "combiner": "sqrtn",
+        "dtype": "string"
+      }
+    },
+    {
+      "name": "sparse_column_with_hash_bucket",
+      "parameters": {
+        "input_tensor": "chid",
+        "output_tensor": "chid_hash",
+        "wide_or_deep" : "",
+        "hash_bucket_size": 100,
+        "combiner": "sqrtn",
+        "dtype": "string"
+      }
+    },
+    {
+      "name": "sparse_column_with_hash_bucket",
+      "parameters": {
+        "input_tensor": "item_id",
+        "output_tensor": "item_id_hash",
+        "wide_or_deep" : "wide",
+        "hash_bucket_size": 10000000,
+        "combiner": "sqrtn",
+        "dtype": "string"
+      }
+    },
+    {
+      "name": "sparse_column_with_keys",
+      "parameters": {
+        "input_tensor": "ct_lang",
+        "output_tensor": "ct_lang_keys",
+        "keys": ["hindi","english"],
+        "wide_or_deep" : "",
+        "dtype": "string"
+      }
+    },
+    {
+      "name": "sparse_column_with_keys",
+      "parameters": {
+        "input_tensor": "gra_nw",
+        "output_tensor": "gra_nw_keys",
+        "keys": ["2.5G", "2.75G", "3G", "4G", "WIFI", "UNKNOWN"],
+        "wide_or_deep" : "wide",
+        "default_value": 5,
+        "dtype": "string"
+      }
+    },
+    {
+      "name": "sparse_column_with_hash_bucket",
+      "parameters": {
+        "input_tensor": "gra_isp",
+        "output_tensor": "gra_isp_hash",
+        "wide_or_deep" : "wide",
+        "hash_bucket_size": 10000,
+        "combiner": "sqrtn",
+        "dtype": "string"
+      }
+    },
+    {
+      "name": "sparse_column_with_hash_bucket",
+      "parameters": {
+        "input_tensor": "gra_mi",
+        "output_tensor": "gra_mi_hash",
+        "wide_or_deep" : "wide",
+        "hash_bucket_size": 100000,
+        "combiner": "sqrtn",
+        "dtype": "string"
+      }
+    },
+    {
+      "name": "sparse_column_with_hash_bucket",
+      "parameters": {
+        "input_tensor": "gra_ve",
+        "output_tensor": "gra_ve_hash",
+        "wide_or_deep" : "wide",
+        "hash_bucket_size": 100000,
+        "combiner": "sqrtn",
+        "dtype": "string"
+      }
+    },
+    {
+      "name": "sparse_column_with_hash_bucket",
+      "parameters": {
+        "input_tensor": "lbs_prov",
+        "output_tensor": "lbs_prov_hash",
+        "wide_or_deep" : "wide",
+        "hash_bucket_size": 100000,
+        "combiner": "sqrtn",
+        "dtype": "string"
+      }
+    },
+    {
+      "name": "sparse_column_with_hash_bucket",
+      "parameters": {
+        "input_tensor": "lbs_city",
+        "output_tensor": "lbs_city_hash",
+        "wide_or_deep" : "wide",
+        "hash_bucket_size": 1000000,
+        "combiner": "sqrtn",
+        "dtype": "string"
+      }
+    },
+    {
+      "name": "sparse_column_with_integerized_feature",
+      "parameters": {
+        "input_tensor": "item_type",
+        "output_tensor": "item_type_integerized",
+        "bucket_size": 1000,
+        "wide_or_deep" : "wide",
+        "dtype": "int64"
+      }
+    },
+    {
+      "name": "sparse_column_with_integerized_feature",
+      "parameters": {
+        "input_tensor": "style_type",
+        "output_tensor": "style_type_integerized",
+        "bucket_size": 1000,
+        "wide_or_deep" : "wide",
+        "dtype": "int64"
+      }
+    },
+    {
+      "name": "sparse_column_with_hash_bucket",
+      "parameters": {
+        "input_tensor": "cate_id",
+        "output_tensor": "cate_id_hash",
+        "wide_or_deep" : "",
+        "hash_bucket_size": 500,
+        "combiner": "sqrtn",
+        "dtype": "string"
+      }
+    },
+    {
+      "name": "sparse_column_with_hash_bucket",
+      "parameters": {
+        "input_tensor": "source",
+        "output_tensor": "source_hash",
+        "wide_or_deep" : "",
+        "hash_bucket_size": 100000,
+        "dtype": "string"
+      }
+    },
+    {
+      "name": "sparse_column_with_keys",
+      "parameters": {
+        "input_tensor": "is_top",
+        "output_tensor": "is_top_keys",
+        "keys": ["0", "1"],
+        "wide_or_deep" : "",
+        "combiner": "sqrtn",
+        "dtype": "string"
+      }
+    },
+    {
+      "name": "sparse_column_with_hash_bucket",
+      "parameters": {
+        "input_tensor": "site",
+        "output_tensor": "site_hash",
+        "wide_or_deep" : "",
+        "hash_bucket_size": 10000,
+        "combiner": "sqrtn",
+        "dtype": "string"
+      }
+    },
+    {
+      "name": "sparse_column_with_hash_bucket",
+      "parameters": {
+        "input_tensor": "user_lt_top_cate",
+        "output_tensor": "user_lt_top_cate_hash",
+        "wide_or_deep" : "",
+        "hash_bucket_size": 500,
+        "combiner": "sqrtn",
+        "dtype": "string"
+      }
+    },
+    {
+      "name": "sparse_column_with_hash_bucket",
+      "parameters": {
+        "input_tensor": "stL1C",
+        "output_tensor": "stL1C_hash",
+        "wide_or_deep" : "",
+        "hash_bucket_size": 500,
+        "combiner": "sqrtn",
+        "dtype": "string"
+      }
+    },
+    {
+      "name": "sparse_column_with_hash_bucket",
+      "parameters": {
+        "input_tensor": "stL2C",
+        "output_tensor": "stL2C_hash",
+        "wide_or_deep" : "",
+        "hash_bucket_size": 500,
+        "combiner": "sqrtn",
+        "dtype": "string"
+      }
+    },
+    {
+      "name": "sparse_column_with_hash_bucket",
+      "parameters": {
+        "input_tensor": "L1C",
+        "output_tensor": "L1C_hash",
+        "wide_or_deep" : "",
+        "hash_bucket_size": 500,
+        "combiner": "sqrtn",
+        "dtype": "string"
+      }
+    },
+    {
+      "name": "sparse_column_with_hash_bucket",
+      "parameters": {
+        "input_tensor": "L2C",
+        "output_tensor": "L2C_hash",
+        "wide_or_deep" : "",
+        "hash_bucket_size": 500,
+        "combiner": "sqrtn",
+        "dtype": "string"
+      }
+    },
+    {
+      "name": "sparse_column_with_hash_bucket",
+      "parameters": {
+        "input_tensor": "stTag",
+        "output_tensor": "stTag_hash",
+        "wide_or_deep" : "",
+        "hash_bucket_size": 200000,
+        "combiner": "sqrtn",
+        "dtype": "string"
+      }
+    },
+    {
+      "name": "sparse_column_with_hash_bucket",
+      "parameters": {
+        "input_tensor": "ClkI",
+        "output_tensor": "ClkI_hash",
+        "wide_or_deep" : "",
+        "hash_bucket_size": 1000000,
+        "combiner": "sqrtn",
+        "dtype": "string"
+      }
+    },
+    {
+      "name": "sparse_column_with_hash_bucket",
+      "parameters": {
+        "input_tensor": "ltClkItems",
+        "output_tensor": "ltClkItems_hash",
+        "wide_or_deep" : "",
+        "hash_bucket_size": 10000000,
+        "combiner": "sqrtn",
+        "dtype": "string"
+      }
+    },
+    {
+      "name": "sparse_column_with_keys",
+      "parameters": {
+        "input_tensor": "tmhour",
+        "output_tensor": "tmhour_keys",
+        "keys": ["01", "02", "03", "04", "05", "06",
+                 "07", "08", "09", "10", "11", "12",
+                 "13", "14", "15", "16", "17", "18",
+                 "19", "20", "21", "22", "23", "00"],
+        "wide_or_deep" : "",
+        "dtype": "string"
+      }
+	},
+    {
+      "name": "real_valued_column",
+      "parameters": {
+        "input_tensor": "read_tm_vl",
+        "output_tensor": "read_tm_vl",
+        "wide_or_deep": ""
+      }
+    },
+    {
+      "name": "real_valued_column",
+      "parameters": {
+        "input_tensor": "read_tm_vl2",
+        "output_tensor": "read_tm_vl2",
+        "wide_or_deep": ""
+      }
+    },
+    {
+      "name": "real_valued_column",
+      "parameters": {
+        "input_tensor": "rt_ctr",
+        "output_tensor": "rt_ctr",
+        "wide_or_deep" : "deep"
+      }
+    },
+    {
+      "name": "real_valued_column",
+      "parameters": {
+        "input_tensor": "ToCtr",
+        "output_tensor": "ToCtr",
+        "wide_or_deep" : "deep"
+      }
+    },
+    {
+      "name": "real_valued_column",
+      "parameters": {
+        "input_tensor": "PreCtr",
+        "output_tensor": "PreCtr",
+        "wide_or_deep" : "deep"
+      }
+    },
+    {
+      "name": "real_valued_column",
+      "parameters": {
+        "input_tensor": "pub_tm_tonow",
+        "output_tensor": "pub_tm_tonow",
+        "wide_or_deep" : ""
+      }
+    },
+    {
+      "name": "real_valued_column",
+      "parameters": {
+        "input_tensor": "weight",
+        "output_tensor": "weight",
+        "wide_or_deep" : ""
+       }
+    },
+    {
+      "name": "real_valued_column",
+      "parameters": {
+        "input_tensor": "rt_pv",
+        "output_tensor": "rt_pv",
+        "wide_or_deep": ""
+      }
+    },
+    {
+      "name": "real_valued_column",
+      "parameters": {
+        "input_tensor": "rt_clk",
+        "output_tensor": "rt_clk",
+        "wide_or_deep": ""
+      }
+    },
+    {
+      "name": "real_valued_column",
+      "parameters": {
+        "input_tensor": "PrePv",
+        "output_tensor": "PrePv",
+        "wide_or_deep": ""
+      }
+    },
+    {
+      "name": "real_valued_column",
+      "parameters": {
+        "input_tensor": "PreClk",
+        "output_tensor": "PreClk",
+        "wide_or_deep": ""
+      }
+    },
+    {
+      "name": "real_valued_column",
+      "parameters": {
+        "input_tensor": "ToPv",
+        "output_tensor": "ToPv",
+        "wide_or_deep": ""
+      }
+    },
+    {
+      "name": "real_valued_column",
+      "parameters": {
+        "input_tensor": "ToClk",
+        "output_tensor": "ToClk",
+        "wide_or_deep": ""
+      }
+    },
+    {
+      "name": "bucketized_column",
+      "parameters": {
+        "input_tensor": "rt_ctr",
+        "output_tensor": "rt_ctr_bucket",
+        "boundaries": "np.linspace(0.0, 1.0, 100.0)",
+        "wide_or_deep": ""
+      }
+    },
+    {
+      "name": "bucketized_column",
+      "parameters": {
+        "input_tensor": "ToCtr",
+        "output_tensor": "ToCtr_bucket",
+        "boundaries": "np.linspace(0.0, 1.0, 100.0)",
+        "wide_or_deep": ""
+      }
+    },
+    {
+      "name": "bucketized_column",
+      "parameters": {
+        "input_tensor": "PreCtr",
+        "output_tensor": "PreCtr_bucket",
+        "boundaries": "np.linspace(0.0, 1.0, 100.0)",
+        "wide_or_deep": ""
+      }
+    },
+    {
+      "name": "bucketized_column",
+      "parameters": {
+        "input_tensor": "pub_tm_tonow",
+        "output_tensor": "pub_tm_tonow_bucket",
+        "boundaries": [1.0, 2.0, 4.0, 8.0, 24.0, 48.0],
+        "wide_or_deep" : "wide"
+      }
+    },
+    {
+      "name": "crossed_column",
+      "parameters": {
+        "input_tensor": "ct_lang_keys,cate_id_hash",
+        "output_tensor": "lang_cross_cate",
+        "hash_bucket_size": 200,
+        "wide_or_deep" : "wide"
+      }
+    },
+    {
+      "name": "crossed_column",
+      "parameters": {
+        "input_tensor": "ct_lang_keys,app_keys",
+        "output_tensor": "lang_cross_app",
+        "hash_bucket_size": 20,
+        "wide_or_deep" : "wide"
+      }
+    },
+    {
+      "name": "crossed_column",
+      "parameters": {
+        "input_tensor": "ct_lang_keys,chid_hash",
+        "output_tensor": "lang_cross_chid",
+        "hash_bucket_size": 100,
+        "wide_or_deep": "wide"
+      }
+    },
+    {
+      "name": "crossed_column",
+      "parameters": {
+        "input_tensor": "ct_lang_keys,is_top_keys",
+        "output_tensor": "lang_cross_is_top",
+        "hash_bucket_size": 10,
+        "wide_or_deep" : "wide"
+      }
+    },
+    {
+      "name": "crossed_column",
+      "parameters": {
+        "input_tensor": "ct_lang_keys,source_hash",
+        "output_tensor": "lang_cross_source",
+        "hash_bucket_size": 200000,
+        "wide_or_deep" : "wide"
+      }
+    },
+    {
+      "name": "crossed_column",
+      "parameters": {
+        "input_tensor": "ct_lang_keys,site_hash",
+        "output_tensor": "lang_cross_site",
+        "hash_bucket_size": 20000,
+        "wide_or_deep" : "wide"
+      }
+    },
+    {
+      "name": "crossed_column",
+      "parameters": {
+        "input_tensor": "ct_lang_keys,ToCtr_bucket",
+        "output_tensor": "lang_cross_ToCtr_bucket",
+        "hash_bucket_size": 3000,
+        "wide_or_deep" : "wide"
+      }
+    },
+    {
+      "name": "crossed_column",
+      "parameters": {
+        "input_tensor": "ct_lang_keys,PreCtr_bucket",
+        "output_tensor": "lang_cross_PreCtr_bucket",
+        "hash_bucket_size": 3000,
+        "wide_or_deep" : "wide"
+      }
+    },
+    {
+      "name": "crossed_column",
+      "parameters": {
+        "input_tensor": "ct_lang_keys,rt_ctr_bucket",
+        "output_tensor": "lang_cross_rt_ctr_bucket",
+        "hash_bucket_size": 3000,
+        "wide_or_deep" : "wide"
+      }
+    },
+    {
+      "name": "crossed_column",
+      "parameters": {
+        "input_tensor": "ct_lang_keys,tmhour_keys",
+        "output_tensor": "lang_cross_tmhour",
+        "hash_bucket_size": 100,
+        "wide_or_deep" : "wide"
+      }
+    },
+    {
+      "name": "crossed_column",
+      "parameters": {
+        "input_tensor": "lang_cross_cate,tmhour_keys",
+        "output_tensor": "lang_cross_cate_cross_tmhour",
+        "hash_bucket_size": 5000,
+        "wide_or_deep" : "wide"
+      }
+    },
+    {
+      "name": "crossed_column",
+      "parameters": {
+        "input_tensor": "user_lt_top_cate_hash,item_id_hash",
+        "output_tensor": "user_lt_top_cate_cross_item_id",
+        "hash_bucket_size": 10000000,
+        "wide_or_deep" : "wide"
+      }
+    },
+    {
+      "name": "crossed_column",
+      "parameters": {
+        "input_tensor": "user_lt_top_cate_hash,cate_id_hash",
+        "output_tensor": "user_lt_top_cate_cross_cate_id",
+        "hash_bucket_size": 5000,
+        "wide_or_deep" : "wide"
+      }
+    },
+    {
+      "name": "crossed_column",
+      "parameters": {
+        "input_tensor": "pub_tm_tonow_bucket,cate_id_hash",
+        "output_tensor": "pub_tm_tonow_bucket_cross_cate_id",
+        "hash_bucket_size": 500,
+        "wide_or_deep" : "wide"
+      }
+    },
+    {
+      "name": "embedding_column",
+      "parameters": {
+        "input_tensor": "utdid_hash",
+        "output_tensor": "utdid_embedding",
+        "dimension": 32,
+        "wide_or_deep": "deep"
+      }
+    },
+    {
+      "name": "embedding_column",
+      "parameters": {
+        "input_tensor": "item_id_hash",
+        "output_tensor": "item_id_embedding",
+        "dimension": 32,
+        "wide_or_deep": "deep"
+      }
+    },
+    {
+      "name": "embedding_column",
+      "parameters": {
+        "input_tensor": "ct_lang_keys",
+        "output_tensor": "ct_lang_embedding",
+        "dimension": 32,
+        "wide_or_deep": "deep"
+      }
+    },
+    {
+      "name": "embedding_column",
+      "parameters": {
+        "input_tensor": "app_keys",
+        "output_tensor": "app_embedding",
+        "dimension": 32,
+        "wide_or_deep": "deep"
+      }
+    },
+    {
+      "name": "embedding_column",
+      "parameters": {
+        "input_tensor": "chid_hash",
+        "output_tensor": "chid_embedding",
+        "dimension": 32,
+        "wide_or_deep": "deep"
+      }
+    },
+    {
+      "name": "embedding_column",
+      "parameters": {
+        "input_tensor": "cate_id_hash",
+        "output_tensor": "cate_id_embedding",
+        "dimension": 32,
+        "wide_or_deep": "deep"
+      }
+    },
+    {
+      "name": "embedding_column",
+      "parameters": {
+        "input_tensor": "source_hash",
+        "output_tensor": "source_embedding",
+        "dimension": 16,
+        "wide_or_deep": "deep"
+      }
+    },
+    {
+      "name": "embedding_column",
+      "parameters": {
+        "input_tensor": "site_hash",
+        "output_tensor": "site_embedding",
+        "dimension": 16,
+        "wide_or_deep": "deep"
+      }
+    },
+    {
+      "name": "embedding_column",
+      "parameters": {
+        "input_tensor": "stL1C_hash",
+        "output_tensor": "stL1C_embedding",
+        "dimension": 16,
+        "wide_or_deep": "deep"
+      }
+    },
+    {
+      "name": "embedding_column",
+      "parameters": {
+        "input_tensor": "stL2C_hash",
+        "output_tensor": "stL2C_embedding",
+        "dimension": 16,
+        "wide_or_deep": "deep"
+      }
+    },
+    {
+      "name": "embedding_column",
+      "parameters": {
+        "input_tensor": "L1C_hash",
+        "output_tensor": "L1C_embedding",
+        "dimension": 16,
+        "wide_or_deep": "deep"
+      }
+    },
+    {
+      "name": "embedding_column",
+      "parameters": {
+        "input_tensor": "L2C_hash",
+        "output_tensor": "L2C_embedding",
+        "dimension": 16,
+        "wide_or_deep": "deep"
+      }
+    },
+    {
+      "name": "embedding_column",
+      "parameters": {
+        "input_tensor": "stTag_hash",
+        "output_tensor": "stTag_embedding",
+        "dimension": 16,
+        "wide_or_deep": "deep"
+      }
+    },
+    {
+      "name": "embedding_column",
+      "parameters": {
+        "input_tensor": "is_top_keys",
+        "output_tensor": "is_top_embedding",
+        "dimension": 16,
+        "wide_or_deep": "deep"
+      }
+    },
+    {
+      "name": "embedding_column",
+      "parameters": {
+        "input_tensor": "user_lt_top_cate_hash",
+        "output_tensor": "user_lt_top_cate_embedding",
+        "dimension": 32,
+        "wide_or_deep": "deep"
+      }
+    },
+    {
+      "name": "embedding_column",
+      "parameters": {
+        "input_tensor": "tmhour_keys",
+        "output_tensor": "tmhour_embedding",
+        "dimension": 16,
+        "wide_or_deep": "deep"
+      }
+    },
+    {
+      "name": "embedding_column",
+      "parameters": {
+        "input_tensor": "ltClkItems_hash",
+        "output_tensor": "ltClkItems_embedding",
+        "dimension": 16,
+        "wide_or_deep": "deep"
+      }
+    },
+    {
+      "name": "embedding_column",
+      "parameters": {
+        "input_tensor": "ClkI_hash",
+        "output_tensor": "ClkI_embedding",
+        "dimension": 16,
+        "wide_or_deep": "deep"
+      }
+    },
+    {
+      "name": "embedding_column",
+      "parameters": {
+        "input_tensor": "gra_nw_keys",
+        "output_tensor": "gra_nw_embedding",
+        "dimension": 8,
+        "wide_or_deep": "deep"
+      }
+    },
+    {
+      "name": "embedding_column",
+      "parameters": {
+        "input_tensor": "gra_isp_hash",
+        "output_tensor": "gra_isp_embedding",
+        "dimension": 8,
+        "wide_or_deep": "deep"
+      }
+    },
+    {
+      "name": "embedding_column",
+      "parameters": {
+        "input_tensor": "gra_mi_hash",
+        "output_tensor": "gra_mi_embedding",
+        "dimension": 8,
+        "wide_or_deep": "deep"
+      }
+    },
+    {
+      "name": "embedding_column",
+      "parameters": {
+        "input_tensor": "gra_ve_hash",
+        "output_tensor": "gra_ve_embedding",
+        "dimension": 8,
+        "wide_or_deep": "deep"
+      }
+    },
+    {
+      "name": "embedding_column",
+      "parameters": {
+        "input_tensor": "lbs_prov_hash",
+        "output_tensor": "lbs_prov_embedding",
+        "dimension": 8,
+        "wide_or_deep": "deep"
+      }
+    },
+    {
+      "name": "embedding_column",
+      "parameters": {
+        "input_tensor": "lbs_city_hash",
+        "output_tensor": "lbs_city_embedding",
+        "dimension": 8,
+        "wide_or_deep": "deep"
+      }
+    },
+    {
+      "name": "embedding_column",
+      "parameters": {
+        "input_tensor": "item_type_integerized",
+        "output_tensor": "item_type_embedding",
+        "dimension": 16,
+        "wide_or_deep": "deep"
+      }
+    },
+    {
+      "name": "embedding_column",
+      "parameters": {
+        "input_tensor": "style_type_integerized",
+        "output_tensor": "style_type_embedding",
+        "dimension": 8,
+        "wide_or_deep": "deep"
+      }
+    }
+  ],
+  "modelConfig": {
+    "model_type": "self_define",
+    "parameters": {
+      "model_type": "DNNLinearCombinedClassifier",
+      "record_flag": "[ditt]",
+      "feature_engineering": false,
+      "dnn_hidden_units": [256,128,64,32,16],
+      "path": "hdfs://in-tensorflow/user/admin/yangsen/deep_ctr/self_define_estimator/feature/bias_feature_v1",
+      "init_dir": "hdfs://in-tensorflow/user/admin/yangsen/deep_ctr/self_define_estimator/attention/din_v8/checkpoint",
+      "save_checkpoints_secs": 300,
+      "keep_checkpoint_max": 20,
+      "test_steps": 2000,
+      "label": "read",
+      "batch_size": 2000,
+      "weight_column": "weight"
+    }
+  },
+  "dataSource": {
+      "source_type": "kafka",
+      "kafka_parameters": {
+		"test_steps": 100,
+        "bootstrap_servers": "online-kakfa.uc.local:9092",
+        "topic": "iflow_ctr_model_ol_train_raw_yjr",
+        "group_id": "wnd_yangsen_deep_ctr_feature_bias_feature_v1",
+        "auto_offset_reset": "latest",
+        "seek_to_end": false
+      },
+      "file_parameters": {
+        "train": {
+          "data_path": "hdfs://sf-iflow/user/admin/wide_n_deep/topics/iflow_ctr_model_ol_train_raw_yjr/hourly/2019/04",
+          "data_path_list": [
+            "01"
+          ]
+        },
+        "test": {
+          "data_path": "hdfs://sf-iflow/user/admin/wide_n_deep/topics/iflow_ctr_model_ol_train_raw_yjr/hourly/2019/04",
+          "data_path_list": [
+            "02"
+          ]
+        },
+        "cycle": 1,
+		"test_steps": 2000
+      }
+   }
+}

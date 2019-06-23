@@ -1,0 +1,270 @@
+{
+  "tensorTransform": [
+    {
+      "name": "sparse_column_with_keys",
+      "parameters": {
+        "input_tensor": "app",
+        "output_tensor": "app",
+        "keys": ["app_iflow", "browser_iflow"],
+        "default_value": 1,
+        "wide_or_deep" : "",
+        "dtype": "string"
+      }
+    },
+    {
+      "name": "sparse_column_with_hash_bucket",
+      "parameters": {
+        "input_tensor": "utdid",
+        "output_tensor": "utdid",
+        "wide_or_deep" : "",
+        "hash_bucket_size": 40000000,
+        "combiner": "sqrtn",
+        "dtype": "string"
+      }
+    },
+    {
+      "name": "sparse_column_with_hash_bucket",
+      "parameters": {
+        "input_tensor": "pos",
+        "output_tensor": "pos",
+        "wide_or_deep" : "",
+        "hash_bucket_size": 800,
+        "combiner": "sqrtn",
+        "dtype": "string"
+      }
+    },
+    {
+      "name": "sparse_column_with_hash_bucket",
+      "parameters": {
+        "input_tensor": "ct_lang",
+        "output_tensor": "ct_lang",
+        "wide_or_deep" : "",
+        "hash_bucket_size": 200,
+        "combiner": "sqrtn",
+        "dtype": "string"
+      }
+    },
+    {
+      "name": "sparse_column_with_hash_bucket",
+      "parameters": {
+        "input_tensor": "chid",
+        "output_tensor": "chid",
+        "wide_or_deep" : "",
+        "hash_bucket_size": 100,
+        "combiner": "sqrtn",
+        "dtype": "string"
+      }
+    },
+    {
+      "name": "sparse_column_with_hash_bucket",
+      "parameters": {
+        "input_tensor": "item_id",
+        "output_tensor": "item_id",
+        "wide_or_deep" : "wide",
+        "hash_bucket_size": 10000000,
+        "combiner": "sqrtn",
+        "dtype": "string"
+      }
+    },
+    {
+      "name": "sparse_column_with_hash_bucket",
+      "parameters": {
+        "input_tensor": "stL1C",
+        "output_tensor": "stL1C",
+        "wide_or_deep" : "",
+        "hash_bucket_size": 500,
+        "combiner": "sqrtn",
+        "dtype": "string"
+      }
+    },
+    {
+      "name": "sparse_column_with_hash_bucket",
+      "parameters": {
+        "input_tensor": "stL2C",
+        "output_tensor": "stL2C",
+        "wide_or_deep" : "",
+        "hash_bucket_size": 500,
+        "combiner": "sqrtn",
+        "dtype": "string"
+      }
+    },
+    {
+      "name": "sparse_column_with_hash_bucket",
+      "parameters": {
+        "input_tensor": "L1C",
+        "output_tensor": "L1C",
+        "wide_or_deep" : "",
+        "hash_bucket_size": 500,
+        "combiner": "sqrtn",
+        "dtype": "string"
+      }
+    },
+    {
+      "name": "sparse_column_with_hash_bucket",
+      "parameters": {
+        "input_tensor": "L2C",
+        "output_tensor": "L2C",
+        "wide_or_deep" : "",
+        "hash_bucket_size": 500,
+        "combiner": "sqrtn",
+        "dtype": "string"
+      }
+    },
+    {
+      "name": "sparse_column_with_hash_bucket",
+      "parameters": {
+        "input_tensor": "stTag",
+        "output_tensor": "stTag",
+        "wide_or_deep" : "",
+        "hash_bucket_size": 200000,
+        "combiner": "sqrtn",
+        "dtype": "string"
+      }
+    },
+    {
+      "name": "sparse_column_with_hash_bucket",
+      "parameters": {
+        "input_tensor": "ClkI",
+        "output_tensor": "ClkI",
+        "wide_or_deep" : "",
+        "hash_bucket_size": 10000000,
+        "combiner": "sqrtn",
+        "dtype": "string"
+      }
+    },
+    {
+      "name": "embedding_column",
+      "parameters": {
+        "input_tensor": "item_id",
+        "output_tensor": "item_id_embedding",
+        "dimension": 32,
+        "initializer" : "zeros",
+        "wide_or_deep": "item"
+      }
+    },
+    {
+      "name": "embedding_column",
+      "parameters": {
+        "input_tensor": "utdid",
+        "output_tensor": "utdid_embedding",
+        "dimension": 32,
+        "initializer" : "zeros",
+        "wide_or_deep": "deep"
+      }
+    },
+    {
+      "name": "embedding_column",
+      "parameters": {
+        "input_tensor": "pos",
+        "output_tensor": "pos_embedding",
+        "dimension": 1,
+        "wide_or_deep": "bias"
+      }
+    },
+    {
+      "name": "embedding_column",
+      "parameters": {
+        "input_tensor": "ct_lang",
+        "output_tensor": "ct_lang_embedding",
+        "dimension": 32,
+        "wide_or_deep": "deep"
+      }
+    },
+    {
+      "name": "embedding_column",
+      "parameters": {
+        "input_tensor": "app",
+        "output_tensor": "app_embedding",
+        "dimension": 32,
+        "wide_or_deep": "deep"
+      }
+    },
+    {
+      "name": "embedding_column",
+      "parameters": {
+        "input_tensor": "chid",
+        "output_tensor": "chid_embedding",
+        "dimension": 32,
+        "wide_or_deep": "deep"
+      }
+    },
+    {
+      "name": "embedding_column",
+      "parameters": {
+        "input_tensor": "stL1C",
+        "output_tensor": "stL1C_embedding",
+        "dimension": 16,
+        "wide_or_deep": "deep"
+      }
+    },
+    {
+      "name": "embedding_column",
+      "parameters": {
+        "input_tensor": "stL2C",
+        "output_tensor": "stL2C_embedding",
+        "dimension": 16,
+        "wide_or_deep": "deep"
+      }
+    },
+    {
+      "name": "embedding_column",
+      "parameters": {
+        "input_tensor": "L1C",
+        "output_tensor": "L1C_embedding",
+        "dimension": 16,
+        "wide_or_deep": "deep"
+      }
+    },
+    {
+      "name": "embedding_column",
+      "parameters": {
+        "input_tensor": "L2C",
+        "output_tensor": "L2C_embedding",
+        "dimension": 16,
+        "wide_or_deep": "deep"
+      }
+    },
+    {
+      "name": "embedding_column",
+      "parameters": {
+        "input_tensor": "stTag",
+        "output_tensor": "stTag_embedding",
+        "dimension": 16,
+        "wide_or_deep": "deep"
+      }
+    },
+    {
+      "name": "embedding_column",
+      "parameters": {
+        "input_tensor": "ClkI",
+        "output_tensor": "ClkI_embedding",
+        "dimension": 16,
+        "initializer" : "zeros",
+        "wide_or_deep": "deep"
+      }
+    }
+  ],
+  "modelConfig": {
+    "model_type": "self_define",
+    "parameters": {
+      "model_type": "DSSM",
+      "dnn_hidden_units": [128,128,128,128,128],
+      "checkpoint_path": "hdfs://sf-iflow/user/admin/maxuan/dssm/v11_hdfs/checkpoint",
+      "export_path": "hdfs://sf-iflow/user/admin/deep_match/v1/export_checked/2",
+      "save_checkpoints_secs": 600,
+      "test_steps": 100,
+      "label": "read",
+      "run_dist": true
+    }
+  },
+  "dataSource": {
+    "source_type": "hdfs",
+    "parameters": {
+      "processed_train_file": "hdfs://sf-iflow/user/admin/maxuan/dssm/v11_hdfs/processed_train_file",
+      "train_data": "hdfs://sf-iflow/user/admin/maxuan/dssm/parse_data/",
+      "test_data": "hdfs://sf-iflow/user/admin/maxuan/dssm/parse_data/20190427",
+      "predict_data": "hdfs://in-tensorflow/user/admin/maxuan/dssm/parse_data_20190331",
+      "batch_size": 2000
+    }
+  }
+}

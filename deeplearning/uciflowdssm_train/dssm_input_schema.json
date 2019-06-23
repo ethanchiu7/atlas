@@ -1,0 +1,270 @@
+{
+    "recordFlag": "[ditt]",
+    "column": [
+        {
+            "columnName": "cate_id_l1",
+            "type": "string",
+            "separator": ","
+        },
+        {
+            "columnName": "reco_id",
+            "type": "string",
+            "separator": ","
+        },
+        {
+            "columnName": "read",
+            "type": "int64",
+            "separator": ","
+        },
+        {
+            "columnName": "app",
+            "type": "string",
+            "separator": ","
+        },
+        {
+            "columnName": "utdid",
+            "type": "string",
+            "separator": ","
+        },
+        {
+            "columnName": "chid",
+            "type": "string",
+            "separator": ","
+        },
+        {
+            "columnName": "item_id",
+            "type": "string",
+            "separator": ","
+        },
+        {
+            "columnName": "ct_lang",
+            "type": "string",
+            "separator": ","
+        },
+        {
+            "columnName": "cate_id",
+            "type": "string",
+            "separator": ","
+        },
+        {
+            "columnName": "source",
+            "type": "string",
+            "separator": ","
+        },
+        {
+            "columnName": "pub_tm",
+            "type": "string",
+            "separator": ","
+        },
+        {
+            "columnName": "pos",
+            "type": "string",
+            "separator": ","
+        },
+        {
+            "columnName": "is_top",
+            "type": "string",
+            "separator": ","
+        },
+        {
+            "columnName": "rt_pv",
+            "type": "float32",
+            "separator": ","
+        },
+        {
+            "columnName": "rt_clk",
+            "type": "float32",
+            "separator": ","
+        },
+        {
+            "columnName": "rt_ctr",
+            "type": "float32",
+            "separator": ","
+        },
+        {
+            "columnName": "stL1C",
+            "type": "string",
+            "separator": ","
+        },
+        {
+            "columnName": "stL2C",
+            "type": "string",
+            "separator": ","
+        },
+        {
+            "columnName": "L1C",
+            "type": "string",
+            "separator": ","
+        },
+        {
+            "columnName": "L2C",
+            "type": "string",
+            "separator": ","
+        },
+        {
+            "columnName": "ltClkItems",
+            "type": "string",
+            "separator": ","
+        },
+        {
+            "columnName": "ClkI",
+            "type": "string",
+            "separator": ","
+        },
+        {
+            "columnName": "Clk2I",
+            "type": "string",
+            "separator": ","
+        },
+        {
+            "columnName": "sessClkI",
+            "type": "string",
+            "separator": ","
+        },
+        {
+            "columnName": "NotClkI2",
+            "type": "string",
+            "separator": ","
+        },
+        {
+            "columnName": "pos_tag",
+            "type": "string",
+            "separator": ","
+        },
+        {
+            "columnName": "neg_tag",
+            "type": "string",
+            "separator": ","
+        },
+        {
+            "columnName": "pos_cat",
+            "type": "string",
+            "separator": ","
+        },
+        {
+            "columnName": "neg_cat",
+            "type": "string",
+            "separator": ","
+        },
+        {
+            "columnName": "itag",
+            "type": "string",
+            "separator": ","
+        },
+        {
+            "columnName": "wtTagClkI",
+            "type": "string",
+            "separator": ","
+        },
+        {
+            "columnName": "mtTagClkI",
+            "type": "string",
+            "separator": ","
+        },
+        {
+            "columnName": "ltTagClkI",
+            "type": "string",
+            "separator": ","
+        },
+        {
+            "columnName": "extTagClkI",
+            "type": "string",
+            "separator": ","
+        },
+        {
+            "columnName": "mergeTagClkI",
+            "type": "string",
+            "separator": ","
+        },
+        {
+            "columnName": "channelClkI",
+            "type": "string",
+            "separator": ","
+        },
+        {
+            "columnName": "ToPv",
+            "type": "float32",
+            "separator": ","
+        },
+        {
+            "columnName": "ToClk",
+            "type": "float32",
+            "separator": ","
+        },
+        {
+            "columnName": "ToCtr",
+            "type": "float32",
+            "separator": ","
+        },
+        {
+            "columnName": "PrePv",
+            "type": "float32",
+            "separator": ","
+        },
+        {
+            "columnName": "PreClk",
+            "type": "float32",
+            "separator": ","
+        },
+        {
+            "columnName": "PreCtr",
+            "type": "float32",
+            "separator": ","
+        },
+        {
+            "columnName": "site",
+            "type": "string",
+            "separator": ","
+        },
+        {
+            "columnName": "tm",
+            "type": "string",
+            "separator": ","
+        },
+        {
+            "columnName": "tmhour",
+            "type": "string",
+            "separator": ","
+        },
+        {
+            "columnName": "stTag",
+            "type": "string",
+            "separator": ","
+        },
+        {
+            "columnName": "user_lt_top_cate",
+            "type": "string",
+            "separator": ","
+        },
+        {
+            "columnName": "pub_tm_tonow",
+            "type": "float32",
+            "separator": ","
+        },
+        {
+            "columnName": "pos",
+            "type": "string",
+            "separator": ","
+        },
+        {
+            "columnName": "item_type",
+            "type": "string",
+            "separator": ","
+        },
+        {
+            "columnName": "style_type",
+            "type": "string",
+            "separator": ","
+        },
+        {
+            "columnName": "content_type",
+            "type": "string",
+            "separator": ","
+        },
+        {  
+            "columnName": "weight",
+            "type": "float32",
+            "separator": ","
+        }
+    ]
+}

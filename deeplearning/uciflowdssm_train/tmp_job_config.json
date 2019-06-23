@@ -1,0 +1,19 @@
+{
+    "PS": {
+        "Resource": {
+            "MemoryLimit": 1000000000, 
+            "CPUCores": 1
+        }, 
+        "TaskCount": 0
+    }, 
+    "Docker": {
+        "DockerImageName": "docker-hub.ucweb.com:5000/shenma/tensorflow_r1.4:opt_2019_03"
+    }, 
+    "Worker": {
+        "Resource": {
+            "MemoryLimit": 2000000000, 
+            "CPUCores": 1
+        }, 
+        "TaskCount": 1
+    }
+}
