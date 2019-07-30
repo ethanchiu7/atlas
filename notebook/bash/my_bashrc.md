@@ -3,6 +3,9 @@
 # env
 export PATH="/Users/zhaoxin/bin:$PATH"
 
+# Mac终端配置一多彩的iTerm 2
+# https://www.jianshu.com/p/7c7309f4ad0b
+
 # some more ls aliases
 alias ll='ls -alF'
 alias lh='ls -alFh'
