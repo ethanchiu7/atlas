@@ -29,3 +29,7 @@ set nohls
 set incsearch "搜索自动定位
 set hlsearch
 set autochdir
+
+set fileencodings=utf-8,gbk,utf-16le,cp1252,iso-8859-15,ucs-bom
+set termencoding=utf-8
+set encoding=utf-8
